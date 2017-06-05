@@ -8,9 +8,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -26,10 +28,11 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import org.apache.commons.csv.CSVPrinter;
 
 public class DownloadPicture {
 	
-	private static File directory = new File("upload");
+	private static final File directory = new File("upload");
 	
 	private final static String DELIMITER = ";";
 
@@ -45,7 +48,7 @@ public class DownloadPicture {
 			return "permission deny";
 		}	
 		int result;
-		if (file.getName().indexOf(".csv") >= 0) {
+		if (file.getName().contains(".csv")) {
 			result = handleCSV(file);
 		} else {
 			result = handleXLS(file);
@@ -70,7 +73,7 @@ public class DownloadPicture {
 			for (int i = 0; i < rowCount; i ++) {
 				for (int j = 0; j < colCount; j ++) {
 					content[i][j] = sheet.getCell(j, i).getContents();
-					if (i == 0 && content[i][j].indexOf("图片") >= 0) {
+					if (i == 0 && content[i][j].contains("图片")) {
 						imgPosition = j;
 					}
 				}
@@ -80,15 +83,14 @@ public class DownloadPicture {
 			}
 			for (int i = 1; i < rowCount; i ++) {
 				String[] imgURLs = content[i][imgPosition].split(DELIMITER);
-				StringBuffer sb = new StringBuffer();
+				StringBuilder sb = new StringBuilder();
 				for (int j = 0; j < imgURLs.length; j++) {
-					sb.append(inputOutput(imgURLs[j])+DELIMITER);
+					sb.append(inputOutput(imgURLs[j])).append(DELIMITER);
 				}
-				content[i][imgPosition] = sb.substring(0, sb.length()-1).toString();
+				content[i][imgPosition] = sb.substring(0, sb.length()-1);
 			}
 			writeNew(file.getName(), content);
 		} catch (BiffException | IOException e) {
-			e.printStackTrace();
 		}
 		return 0;
 	}
@@ -101,17 +103,26 @@ public class DownloadPicture {
 			for (CSVRecord record : records) {
 				if (imgPosition == -1) {
 					for (int i = 0; i < record.size(); i ++) {
-						if (record.get(i).indexOf("图片") >= 0) {
+						if (record.get(i).contains("图片")) {
 							imgPosition = i;
 						}
 					}
 				} else {
-					String imgName = inputOutput(record.get(imgPosition));
+                                    if (imgPosition == -1) {
+                                        String imgName = "";
+                                    } else {
+                                        String imgName = inputOutput(record.get(imgPosition));
+                                    }
 				}
 			}
-
+                        try (OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("mfdgood"))) {
+                            try (CSVPrinter printer = CSVFormat.EXCEL.print(out)) {
+                                printer.printRecords(records);
+                                printer.flush();
+                            }
+                        }
 		} catch (IOException e) {
-			e.printStackTrace();
+                    System.out.println(e.getMessage());
 			return 1;
 		}
 		
@@ -143,7 +154,6 @@ public class DownloadPicture {
 			}
 			httpConn.disconnect();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return imgFile.getName();
 	}
@@ -166,7 +176,6 @@ public class DownloadPicture {
 			os.flush();
 			os.close();
 		} catch (IOException | WriteException e) {
-			e.printStackTrace();
 		}
 	}
 
