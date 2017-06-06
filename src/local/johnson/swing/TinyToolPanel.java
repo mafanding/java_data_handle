@@ -1,15 +1,17 @@
 package local.johnson.swing;
 
 import java.awt.LayoutManager;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import local.johnson.event.TinyToolComboBoxPanelEvent;
 
 public class TinyToolPanel extends JPanel {
 
@@ -17,14 +19,18 @@ public class TinyToolPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+        
+        protected final String CONF_PREFIX = "conf.d/";
+        
+        public JComboBox cPanel;
 
-	public TinyToolPanel() throws FileNotFoundException {
+	public TinyToolPanel() throws FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
 		BufferedReader br;
 		ArrayList<String> optList = new ArrayList<String>();
 		String tName;
 		String[] tArray;
 		try {
-			br = new BufferedReader(new FileReader("conf.d/"+this.getClass().getSimpleName()+".conf"));
+			br = new BufferedReader(new FileReader(CONF_PREFIX.concat(this.getClass().getSimpleName()).concat(".conf")));
 			while ((tName = br.readLine()) != null) {
 				tArray = tName.split("=");
 				if (tArray.length <2) {
@@ -34,10 +40,12 @@ public class TinyToolPanel extends JPanel {
 					optList.add(tArray[1]);
 				}
 			}
-			JComboBox cPanel = new JComboBox(optList.toArray());
+			cPanel = new JComboBox(optList.toArray());
+                        Class<?> reflectClass = Class.forName("local.johnson.event.TinyTool"+optList.get(0).concat("Event"));
+                        Constructor c = reflectClass.getConstructor(TinyToolPanel.class);
+                        cPanel.addActionListener(new TinyToolComboBoxPanelEvent(this));
 			this.add(cPanel);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

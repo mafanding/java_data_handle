@@ -2,7 +2,8 @@ package local.johnson.swing;
 
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
-import local.johnson.event.DownloadPictureEvent;
+import local.johnson.event.DownloadPictureChooseEvent;
+import local.johnson.event.DownloadPictureProcessEvent;
 
 public class DownloadPicturePanel extends BasicPanel {
 
@@ -33,9 +34,9 @@ public class DownloadPicturePanel extends BasicPanel {
 	protected void initializeElements()
 	{
 		button.setText("choose");
-		button.addActionListener(new DownloadPictureEvent(this));
+		button.addActionListener(new DownloadPictureChooseEvent(this));
 		pButton.setText("process");
-		pButton.addActionListener(new DownloadPictureEvent(this));
+		pButton.addActionListener(new DownloadPictureProcessEvent(this));
 		this.add(label);
 		this.add(input);
 		this.add(button);

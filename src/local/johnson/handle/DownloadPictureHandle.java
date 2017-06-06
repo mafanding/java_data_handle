@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -97,36 +96,33 @@ public class DownloadPictureHandle {
 		try {
 			Reader in = new FileReader(file);
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-			int imgPosition = -1;
-			for (CSVRecord record : records) {
-				if (imgPosition == -1) {
-					for (int i = 0; i < record.size(); i++) {
-						if (record.get(i).contains("图片")) {
-							imgPosition = i;
-						}
-					}
-				} else {
-					if (imgPosition == -1) {
-						String imgName = "";
-					} else {
-						String imgName = inputOutput(record.get(imgPosition));
-					}
-				}
-			}
-			try (OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("mfdgood"))) {
-				try (CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT)) {
-					for (CSVRecord record : records) {
-						List<String> newRecords = new ArrayList<>();
-						newRecords.add(record.get(0));
-						newRecords.add(record.get(1));
-						newRecords.add(record.get(2));
-						printer.printRecord(newRecords);
-					}
-				}
-				
+			int imgPosition = -1;	
+                        String exportPrefix = "export_";
+			try (FileWriter out = new FileWriter(exportPrefix.concat(file.getName())); CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT)) { 
+                            for (CSVRecord record : records) {
+                                List<String> newRecords = new ArrayList<>();
+                                String imgName = "";
+                                if (imgPosition == -1) {
+                                        for (int i = 0; i < record.size(); i++) {
+                                                if (record.get(i).contains("图片")) {
+                                                        imgPosition = i;
+                                                        break;
+                                                }
+                                        }
+                                } else {
+                                    imgName = inputOutput(record.get(imgPosition));
+                                }
+                                for (int i = 0; i < record.size(); i ++) {
+                                    if (i == imgPosition) {
+                                        newRecords.add(imgName); 
+                                    } else {
+                                       newRecords.add(record.get(i)); 
+                                    }
+                                }
+                                printer.printRecord(newRecords);
+                            }
 			}
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
 			return 1;
 		}
 

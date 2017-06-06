@@ -17,7 +17,7 @@ public class SummaryPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected final String confPrefix = "conf.d/";
+	protected final String CONF_PREFIX = "conf.d/";
 
 	public SummaryPanel() {
 		BufferedReader br;
@@ -26,7 +26,7 @@ public class SummaryPanel extends JPanel {
 		String tName;
 		String[] tArray;
 		try {
-			br = new BufferedReader(new FileReader(confPrefix.concat("layout.conf")));
+			br = new BufferedReader(new FileReader(CONF_PREFIX.concat("layout.conf")));
 			while ((tName = br.readLine()) != null) {
 				tArray = tName.split("=");
 				if (tArray.length <2) {
