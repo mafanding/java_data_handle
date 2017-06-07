@@ -1,7 +1,6 @@
 package local.johnson.swing;
 
 import java.awt.LayoutManager;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,7 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import local.johnson.event.TinyToolComboBoxPanelEvent;
+import local.johnson.swing.tinytool.ReplacePanel;
+import local.johnson.swing.tinytool.UniquePanel;
 
 public class TinyToolPanel extends JPanel {
 
@@ -64,5 +66,13 @@ public class TinyToolPanel extends JPanel {
 		super(layout, isDoubleBuffered);
 		// TODO Auto-generated constructor stub
 	}
+        
+        public void loadUniquePanel() {
+            this.add(new UniquePanel());
+        }
+        
+        public void loadReplacePanel() {
+            this.add(new ReplacePanel());
+        }
 
 }
