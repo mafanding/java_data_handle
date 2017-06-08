@@ -10,7 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import local.johnson.event.TinyToolComboBoxPanelEvent;
 import local.johnson.swing.tinytool.DefaultPanel;
 import local.johnson.swing.tinytool.ReplacePanel;

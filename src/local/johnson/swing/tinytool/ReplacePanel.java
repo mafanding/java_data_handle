@@ -6,10 +6,13 @@
 package local.johnson.swing.tinytool;
 
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
+import local.johnson.event.tinytool.replace.ProcessEvent;
 
 /**
  *
@@ -20,21 +23,36 @@ public class ReplacePanel extends JPanel {
     
     public JTextArea destText = null;
     
+    public JTextField search = null;
+    
+    public JTextField replace = null;
+    
     public JTextPane directionText = null;
+    
+    public JButton processButton = null;
     
     public ReplacePanel() {
         super();
         sourceText = new JTextArea(15,5);
         destText = new JTextArea(15,5);
         directionText = new JTextPane();
+        processButton = new JButton();
+        search = new JTextField(1);
+        replace = new JTextField(1);
+        processButton.setText("process");
+        processButton.addActionListener(new ProcessEvent(this));
         sourceText.setBorder(LineBorder.createBlackLineBorder());
         destText.setBorder(LineBorder.createBlackLineBorder());
         sourceText.setLineWrap(true);
         destText.setLineWrap(true);
         directionText.setText("=>");
-        this.setLayout(new GridLayout(1, 4));
+        directionText.setEditable(false);
+        this.setLayout(new GridLayout(1, 6));
         this.add(sourceText);
         this.add(directionText);
+        this.add(search);
+        this.add(replace);
         this.add(destText);
+        this.add(processButton);
     }
 }

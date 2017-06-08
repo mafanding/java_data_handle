@@ -5,12 +5,8 @@
  */
 package local.johnson.event;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JPanel;
 import local.johnson.swing.TinyToolPanel;
 
 /**

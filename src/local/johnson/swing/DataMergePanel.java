@@ -1,69 +1,71 @@
 package local.johnson.swing;
 
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JFileChooser;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import local.johnson.event.datamerge.ChooseEvent;
+import local.johnson.event.datamerge.ProcessEvent;
 
-public class DataMergePanel extends BasicPanel implements ActionListener {
+public class DataMergePanel extends BasicPanel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public DataMergePanel() {
-		initializeElements();
-	}
+    protected final String CONF_PREFIX = "conf.d/";
 
-	public DataMergePanel(LayoutManager layout) {
-		super(layout);
-		// TODO Auto-generated constructor stub
-	}
+    public JComboBox cPanel;
 
-	public DataMergePanel(boolean isDoubleBuffered) {
-		super(isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
+    public DataMergePanel() throws ClassNotFoundException, NoSuchMethodException {
+        BufferedReader br;
+        ArrayList<String> optList = new ArrayList<String>();
+        String tName;
+        String[] tArray;
+        try {
+            br = new BufferedReader(new FileReader(CONF_PREFIX.concat(this.getClass().getSimpleName()).concat(".conf")));
+            while ((tName = br.readLine()) != null) {
+                tArray = tName.split("=");
+                if (tArray.length < 2) {
+                    continue;
+                }
+                if (tArray[0].equals("option")) {
+                    optList.add(tArray[1]);
+                }
+            }
+            cPanel = new JComboBox(optList.toArray());
+            button.setText("choose");
+            button.addActionListener(new ChooseEvent(this));
+            pButton.setText("process");
+            pButton.addActionListener(new ProcessEvent(this));
+            this.add(cPanel);
+            this.add(label);
+            this.add(input);
+            this.add(button);
+            this.add(pButton);
+            this.setLayout(new GridLayout(2, 5));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public DataMergePanel(LayoutManager layout, boolean isDoubleBuffered) {
-		super(layout, isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-	
-	protected void initializeElements()
-	{
-		button.setText("choose");
-		button.addActionListener(this);
-		pButton.setText("process");
-		pButton.addActionListener(this);
-		this.add(label);
-		this.add(input);
-		this.add(button);
-		this.add(pButton);
-		this.setLayout(new FlowLayout());
-	}
-	
-	protected void initializedFileChooser()
-	{
-		chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-	    chooser.setFileFilter(filter);
-	    chooser.setDialogTitle("select file or diretory");
-	    int returnVal = chooser.showOpenDialog(chooser);
-	    if (returnVal == JFileChooser.OPEN_DIALOG) {
-	    	input.setText(chooser.getSelectedFile().getName());
-	    }
-	}
+    public DataMergePanel(LayoutManager layout) {
+        super(layout);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getActionCommand().equals("choose")) {
-			initializedFileChooser();
-		} else if (arg0.getActionCommand().equals("process")) {
-			//TODO
-			System.out.println("I catch it");
-		}
-	}
+    public DataMergePanel(boolean isDoubleBuffered) {
+        super(isDoubleBuffered);
+        // TODO Auto-generated constructor stub
+    }
+
+    public DataMergePanel(LayoutManager layout, boolean isDoubleBuffered) {
+        super(layout, isDoubleBuffered);
+        // TODO Auto-generated constructor stub
+    }
 
 }
