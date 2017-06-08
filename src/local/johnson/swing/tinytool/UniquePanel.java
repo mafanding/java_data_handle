@@ -8,6 +8,9 @@ package local.johnson.swing.tinytool;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -18,12 +21,21 @@ public class UniquePanel extends JPanel {
     
     public JTextArea destText = null;
     
+    public JTextPane directionText = null;
+    
     public UniquePanel() {
         super();
-        sourceText = new JTextArea(5,5);
-        destText = new JTextArea(5,5);
-        this.setLayout(new GridLayout(1, 3));
+        sourceText = new JTextArea(15,5);
+        destText = new JTextArea(15,5);
+        directionText = new JTextPane();
+        sourceText.setBorder(LineBorder.createBlackLineBorder());
+        destText.setBorder(LineBorder.createBlackLineBorder());
+        sourceText.setLineWrap(true);
+        destText.setLineWrap(true);
+        directionText.setText("=>");
+        this.setLayout(new GridLayout(1, 4));
         this.add(sourceText);
+        this.add(directionText);
         this.add(destText);
     }
 }

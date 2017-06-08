@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import local.johnson.event.TinyToolComboBoxPanelEvent;
+import local.johnson.swing.tinytool.DefaultPanel;
 import local.johnson.swing.tinytool.ReplacePanel;
 import local.johnson.swing.tinytool.UniquePanel;
 
@@ -73,6 +74,10 @@ public class TinyToolPanel extends JPanel {
         
         public void loadReplacePanel() {
             this.add(new ReplacePanel());
+        }
+        
+        public void loadDefaultPanel() {
+        	this.add(new DefaultPanel());
         }
 
 }

@@ -6,11 +6,17 @@
 package local.johnson.swing.tinytool;
 
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 
 /**
  *
  * @author mfdgood
  */
 public class DefaultPanel extends JPanel {
-    
+	public JTextPane msgPane = null;
+    public DefaultPanel() {
+    	super();
+    	msgPane.setText("wait for develope");
+    	this.add(msgPane);
+    }
 }
