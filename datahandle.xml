@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<configuration>
+
+  <tabs>
+  	<tab>DownloadPicture</tab>
+  	<tab>DataMerge</tab>
+  	<tab>TinyTool</tab>
+  </tabs>
+  
+  <datamerge>
+  	<options>
+  		<option>AliData</option>
+  		<option>DeepData</option>
+  		<option>CapacityData</option>
+  	</options>
+  </datamerge>
+  
+  <tinytool>
+  	<options>
+  		<option>Unique</option>
+  		<option>Replace</option>
+  	</options>
+  </tinytool>
+  
+</configuration>

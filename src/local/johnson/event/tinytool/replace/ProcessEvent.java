@@ -7,26 +7,29 @@ package local.johnson.event.tinytool.replace;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import local.johnson.swing.tinytool.ReplacePanel;
+import local.johnson.swing.tinytool.Replace;
 
 /**
  *
  * @author mfdgood
  */
-public class ProcessEvent implements ActionListener {
-    
-    public ReplacePanel replacePanel;
-    
-    public ProcessEvent(ReplacePanel replacePanel) {
-        this.replacePanel = replacePanel;
-    }
+public class ProcessEvent implements ActionListener
+{
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String input = this.replacePanel.sourceText.getText();
-        String search = this.replacePanel.search.getText();
-        String replace = this.replacePanel.replace.getText();
-        this.replacePanel.destText.setText(input.replaceAll(search, replace));
-    }
-    
+	public Replace replacePanel;
+
+	public ProcessEvent(Replace replacePanel)
+	{
+		this.replacePanel = replacePanel;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		String input = this.replacePanel.sourceText.getText();
+		String search = this.replacePanel.search.getText();
+		String replace = this.replacePanel.replace.getText();
+		this.replacePanel.destText.setText(input.replaceAll(search, replace));
+	}
+
 }

@@ -7,23 +7,26 @@ package local.johnson.event.datamerge;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import local.johnson.swing.DataMergePanel;
+import local.johnson.swing.DataMerge;
 
 /**
  *
  * @author mfdgood
  */
-public class ProcessEvent implements ActionListener {
-    
-    public DataMergePanel dataMergePanel;
-    
-    public ProcessEvent(DataMergePanel dataMergePanel) {
-        this.dataMergePanel = dataMergePanel;
-    }
+public class ProcessEvent implements ActionListener
+{
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //TODO
-    }
-    
+	public DataMerge dataMergePanel;
+
+	public ProcessEvent(DataMerge dataMergePanel)
+	{
+		this.dataMergePanel = dataMergePanel;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		// TODO
+	}
+
 }

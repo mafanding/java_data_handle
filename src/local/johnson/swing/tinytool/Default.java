@@ -12,11 +12,19 @@ import javax.swing.JTextPane;
  *
  * @author mfdgood
  */
-public class DefaultPanel extends JPanel {
+public class Default extends JPanel
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public JTextPane msgPane = null;
-    public DefaultPanel() {
-    	super();
-    	msgPane.setText("wait for develope");
-    	this.add(msgPane);
-    }
+
+	public Default()
+	{
+		super();
+		msgPane.setText("wait for develop");
+		this.add(msgPane);
+	}
 }

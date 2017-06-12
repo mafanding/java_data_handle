@@ -7,23 +7,26 @@ package local.johnson.event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import local.johnson.swing.TinyToolPanel;
+import local.johnson.swing.TinyTool;
 
 /**
  *
  * @author mfdgood
  */
-public class TinyToolUniqueEvent implements ActionListener {
-    
-    protected TinyToolPanel tinyToolPanel;
-    
-    public TinyToolUniqueEvent(TinyToolPanel tinyToolPanel) {
-        this.tinyToolPanel = tinyToolPanel;
-    }
+public class TinyToolUniqueEvent implements ActionListener
+{
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("run in unique event");
-    }
-    
+	protected TinyTool tinyToolPanel;
+
+	public TinyToolUniqueEvent(TinyTool tinyToolPanel)
+	{
+		this.tinyToolPanel = tinyToolPanel;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		System.out.println("run in unique event");
+	}
+
 }
