@@ -13,19 +13,16 @@ import local.johnson.swing.TinyTool;
  *
  * @author mfdgood
  */
-public class TinyToolUniqueEvent implements ActionListener
-{
+public class TinyToolUniqueEvent implements ActionListener {
 
 	protected TinyTool tinyToolPanel;
 
-	public TinyToolUniqueEvent(TinyTool tinyToolPanel)
-	{
+	public TinyToolUniqueEvent(TinyTool tinyToolPanel) {
 		this.tinyToolPanel = tinyToolPanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		System.out.println("run in unique event");
 	}
 

@@ -13,8 +13,7 @@ import local.johnson.swing.TinyTool;
  *
  * @author mfdgood
  */
-public class TinyToolComboBoxPanelEvent implements ActionListener
-{
+public class TinyToolComboBoxPanelEvent implements ActionListener {
 
 	protected final String ITEM_UNIQUE = "Unique";
 
@@ -24,14 +23,12 @@ public class TinyToolComboBoxPanelEvent implements ActionListener
 
 	protected TinyTool tinyToolPanel;
 
-	public TinyToolComboBoxPanelEvent(TinyTool tinyToolPanel)
-	{
+	public TinyToolComboBoxPanelEvent(TinyTool tinyToolPanel) {
 		this.tinyToolPanel = tinyToolPanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		this.tinyToolPanel.removeAll();
 		this.tinyToolPanel.add(this.tinyToolPanel.cPanel);
 		if (this.tinyToolPanel.cPanel.getItemAt(this.tinyToolPanel.cPanel.getSelectedIndex()).toString()

@@ -18,8 +18,7 @@ import local.johnson.event.tinytool.replace.ProcessEvent;
  *
  * @author mfdgood
  */
-public class Replace extends JPanel
-{
+public class Replace extends JPanel {
 	/**
 	 * 
 	 */
@@ -37,8 +36,7 @@ public class Replace extends JPanel
 
 	public JButton processButton = null;
 
-	public Replace()
-	{
+	public Replace() {
 		super();
 		sourceText = new JTextArea(15, 5);
 		destText = new JTextArea(15, 5);

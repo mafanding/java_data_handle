@@ -4,18 +4,15 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import local.johnson.swing.Summary;
 
-public class dataHandle
-{
+public class dataHandle {
 
 	protected static JFrame frame;
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		startUp();
 	}
 
-	protected static void startUp()
-	{
+	protected static void startUp() {
 		frame = new JFrame("Data Handle Tool");
 		frame.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 4,
 				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 4);

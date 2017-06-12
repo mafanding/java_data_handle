@@ -14,19 +14,16 @@ import local.johnson.swing.tinytool.Unique;
  *
  * @author mfdgood
  */
-public class ProcessEvent implements ActionListener
-{
+public class ProcessEvent implements ActionListener {
 
 	public Unique uniquePanel;
 
-	public ProcessEvent(Unique uniquePanel)
-	{
+	public ProcessEvent(Unique uniquePanel) {
 		this.uniquePanel = uniquePanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		String input = this.uniquePanel.sourceText.getText();
 		String inputs[] = input.split(System.getProperty("line.separator"));
 		StringBuilder outputBuffer = new StringBuilder();

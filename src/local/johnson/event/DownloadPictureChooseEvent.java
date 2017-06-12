@@ -5,19 +5,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import local.johnson.swing.DownloadPicture;
 
-public class DownloadPictureChooseEvent implements ActionListener
-{
+public class DownloadPictureChooseEvent implements ActionListener {
 
 	protected DownloadPicture downloadPicturePanel;
 
-	public DownloadPictureChooseEvent(DownloadPicture downloadPicturePanel)
-	{
+	public DownloadPictureChooseEvent(DownloadPicture downloadPicturePanel) {
 		this.downloadPicturePanel = downloadPicturePanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0)
-	{
+	public void actionPerformed(ActionEvent arg0) {
 		this.downloadPicturePanel.chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		this.downloadPicturePanel.chooser.setFileFilter(this.downloadPicturePanel.filter);
 		this.downloadPicturePanel.chooser.setDialogTitle("select a excel file");

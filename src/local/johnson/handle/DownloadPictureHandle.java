@@ -25,20 +25,17 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import org.apache.commons.csv.CSVPrinter;
 
-public class DownloadPictureHandle
-{
+public class DownloadPictureHandle {
 
 	private static final File directory = new File("upload");
 
 	private final static String DELIMITER = ";";
 
-	public DownloadPictureHandle()
-	{
+	public DownloadPictureHandle() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static String handle(File file)
-	{
+	public static String handle(File file) {
 		if (file == null) {
 			return "please select a excel file to process";
 		}
@@ -57,8 +54,7 @@ public class DownloadPictureHandle
 		return "process success";
 	}
 
-	protected static int handleXLS(File file)
-	{
+	protected static int handleXLS(File file) {
 		try {
 			Workbook wb = Workbook.getWorkbook(file);
 			Sheet sheet = wb.getSheet(0);
@@ -94,8 +90,7 @@ public class DownloadPictureHandle
 		return 0;
 	}
 
-	protected static int handleCSV(File file)
-	{
+	protected static int handleCSV(File file) {
 		try {
 			Reader in = new FileReader(file);
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
@@ -133,8 +128,7 @@ public class DownloadPictureHandle
 		return 0;
 	}
 
-	protected static String inputOutput(String imgURL)
-	{
+	protected static String inputOutput(String imgURL) {
 		HttpURLConnection httpConn;
 		BufferedInputStream bis;
 		BufferedOutputStream bos;
@@ -164,8 +158,7 @@ public class DownloadPictureHandle
 		return imgFile == null ? imgURL : imgFile.getName();
 	}
 
-	protected static void writeNew(String fileName, String[][] content) throws FileNotFoundException
-	{
+	protected static void writeNew(String fileName, String[][] content) throws FileNotFoundException {
 		BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(new File("new_" + fileName)));
 		int rowCount = content.length;
 		int colCount = content[0].length;

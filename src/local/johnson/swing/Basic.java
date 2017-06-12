@@ -8,8 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Basic extends JPanel
-{
+public class Basic extends JPanel {
 
 	/**
 	 * 

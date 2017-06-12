@@ -13,19 +13,16 @@ import local.johnson.swing.DataMerge;
  *
  * @author mfdgood
  */
-public class ProcessEvent implements ActionListener
-{
+public class ProcessEvent implements ActionListener {
 
 	public DataMerge dataMergePanel;
 
-	public ProcessEvent(DataMerge dataMergePanel)
-	{
+	public ProcessEvent(DataMerge dataMergePanel) {
 		this.dataMergePanel = dataMergePanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		// TODO
 	}
 

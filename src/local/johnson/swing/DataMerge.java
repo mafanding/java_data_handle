@@ -12,8 +12,7 @@ import org.apache.commons.configuration2.builder.fluent.Configurations;
 import local.johnson.event.datamerge.ChooseEvent;
 import local.johnson.event.datamerge.ProcessEvent;
 
-public class DataMerge extends Basic
-{
+public class DataMerge extends Basic {
 
 	/**
 	 *
@@ -24,8 +23,7 @@ public class DataMerge extends Basic
 
 	public JComboBox cPanel;
 
-	public DataMerge() throws ClassNotFoundException, NoSuchMethodException
-	{
+	public DataMerge() throws ClassNotFoundException, NoSuchMethodException {
 		BufferedReader br;
 		ArrayList<String> optList = new ArrayList<String>();
 		String tName;

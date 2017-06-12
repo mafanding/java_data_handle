@@ -4,21 +4,18 @@ import java.awt.FlowLayout;
 import local.johnson.event.DownloadPictureChooseEvent;
 import local.johnson.event.DownloadPictureProcessEvent;
 
-public class DownloadPicture extends Basic
-{
+public class DownloadPicture extends Basic {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DownloadPicture()
-	{
+	public DownloadPicture() {
 		initializeElements();
 	}
 
-	protected void initializeElements()
-	{
+	protected void initializeElements() {
 		button.setText("choose");
 		button.addActionListener(new DownloadPictureChooseEvent(this));
 		pButton.setText("process");

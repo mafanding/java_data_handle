@@ -14,19 +14,16 @@ import local.johnson.swing.DataMerge;
  *
  * @author mfdgood
  */
-public class ChooseEvent implements ActionListener
-{
+public class ChooseEvent implements ActionListener {
 
 	public DataMerge dataMergePanel;
 
-	public ChooseEvent(DataMerge dataMergePanel)
-	{
+	public ChooseEvent(DataMerge dataMergePanel) {
 		this.dataMergePanel = dataMergePanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		this.dataMergePanel.chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		this.dataMergePanel.chooser.setFileFilter(this.dataMergePanel.filter);
 		this.dataMergePanel.chooser.setDialogTitle("select file or diretory");

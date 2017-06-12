@@ -13,19 +13,16 @@ import local.johnson.swing.tinytool.Replace;
  *
  * @author mfdgood
  */
-public class ProcessEvent implements ActionListener
-{
+public class ProcessEvent implements ActionListener {
 
 	public Replace replacePanel;
 
-	public ProcessEvent(Replace replacePanel)
-	{
+	public ProcessEvent(Replace replacePanel) {
 		this.replacePanel = replacePanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		String input = this.replacePanel.sourceText.getText();
 		String search = this.replacePanel.search.getText();
 		String replace = this.replacePanel.replace.getText();

@@ -13,18 +13,15 @@ import local.johnson.swing.TinyTool;
  *
  * @author mfdgood
  */
-public class TinyToolReplaceEvent implements ActionListener
-{
+public class TinyToolReplaceEvent implements ActionListener {
 	protected TinyTool tinyToolPanel;
 
-	public TinyToolReplaceEvent(TinyTool tinyToolPanel)
-	{
+	public TinyToolReplaceEvent(TinyTool tinyToolPanel) {
 		this.tinyToolPanel = tinyToolPanel;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
-	{
+	public void actionPerformed(ActionEvent e) {
 		System.out.println("run in replace event");
 	}
 }

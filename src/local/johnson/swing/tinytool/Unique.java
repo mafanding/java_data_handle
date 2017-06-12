@@ -17,8 +17,7 @@ import local.johnson.event.tinytool.unique.ProcessEvent;
  *
  * @author mfdgood
  */
-public class Unique extends JPanel
-{
+public class Unique extends JPanel {
 	/**
 	 * 
 	 */
@@ -32,8 +31,7 @@ public class Unique extends JPanel
 
 	public JButton processButton = null;
 
-	public Unique()
-	{
+	public Unique() {
 		super();
 		sourceText = new JTextArea(15, 5);
 		destText = new JTextArea(15, 5);

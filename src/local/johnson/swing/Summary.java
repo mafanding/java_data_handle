@@ -9,8 +9,7 @@ import org.apache.commons.configuration2.XMLConfiguration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 
-public class Summary extends JPanel
-{
+public class Summary extends JPanel {
 
 	/**
 	 * 
@@ -19,8 +18,7 @@ public class Summary extends JPanel
 
 	protected final String CONF_PREFIX = "conf.d/";
 
-	public Summary()
-	{
+	public Summary() {
 		JTabbedPane jTabbedpane = new JTabbedPane();
 		List<String> tabList;
 		Configurations configs = new Configurations();
@@ -45,20 +43,17 @@ public class Summary extends JPanel
 		}
 	}
 
-	public Summary(LayoutManager arg0)
-	{
+	public Summary(LayoutManager arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Summary(boolean arg0)
-	{
+	public Summary(boolean arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Summary(LayoutManager arg0, boolean arg1)
-	{
+	public Summary(LayoutManager arg0, boolean arg1) {
 		super(arg0, arg1);
 		// TODO Auto-generated constructor stub
 	}

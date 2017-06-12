@@ -14,8 +14,7 @@ import local.johnson.swing.tinytool.Default;
 import local.johnson.swing.tinytool.Replace;
 import local.johnson.swing.tinytool.Unique;
 
-public class TinyTool extends JPanel
-{
+public class TinyTool extends JPanel {
 
 	/**
 	 * 
@@ -27,8 +26,7 @@ public class TinyTool extends JPanel
 	public JComboBox<?> cPanel;
 
 	public TinyTool() throws FileNotFoundException, ClassNotFoundException, InstantiationException,
-			IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException
-	{
+			IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
 		BufferedReader br;
 		ArrayList<String> optList = new ArrayList<String>();
 		String tName;
@@ -55,18 +53,15 @@ public class TinyTool extends JPanel
 		}
 	}
 
-	public void loadUniquePanel()
-	{
+	public void loadUniquePanel() {
 		this.add(new Unique());
 	}
 
-	public void loadReplacePanel()
-	{
+	public void loadReplacePanel() {
 		this.add(new Replace());
 	}
 
-	public void loadDefaultPanel()
-	{
+	public void loadDefaultPanel() {
 		this.add(new Default());
 	}
 
